@@ -1,15 +1,19 @@
-from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
-from .models import File
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse('<h1>Main Page</h1>')
 
 
-class HomePageView(ListView):
-    model = File
-    template_name = 'home.html'
+
+def login(request):
+
+    return HttpResponse('<h1>LOGIN</h1>')
 
 
-class CreatePostView(CreateView): # новый
-    model = File
-    #form_class = PostForm
-    #template_name = 'post.html'
-    success_url = reverse_lazy('home')
+def reg(request):
+
+    return HttpResponse('<h1>REG</h1>')
+
+
+

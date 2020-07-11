@@ -1,0 +1,8 @@
+
+<h1>Добавить файл можно сдесь</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="userdocs">
+    <button type="submit" value="Добавить", class="btn btn-primary">Добавить</button>
+</form>
+

@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'upfiles.apps.UpfilesConfig',
+    'upload.apps.UpfilesConfig',
     'django_cleanup',
 ]
 
@@ -107,6 +107,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = '/upfiles/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'upfiles/files')
+STATICFILES_ROOT = [
+    os.path.join(BASE_DIR, 'upload_files/static')
+]
+
+MEDIA_URL = '/files/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
+

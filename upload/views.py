@@ -8,14 +8,14 @@ class Home(TemplateView):
 
 
 def upload(request):
+    context = {}
     if request.method == 'POST':
         uploaded_file = request.FILES['userdocs']
         fs = FileSystemStorage()
         name = fs.save(uploaded_file.name, uploaded_file)
-        url = fs.url(name)
-        print(url)
+        context['url'] = fs.url(name)
 
-    return render(request, 'pages/upload_.html')
+    return render(request, 'pages/upload_.html', context)
 
 
 def login(request):

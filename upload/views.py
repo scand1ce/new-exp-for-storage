@@ -10,7 +10,7 @@ class Home(TemplateView):
 def upload(request):
     context = {}
     if request.method == 'POST':
-        uploaded_file = request.FILES['userdocs']
+        uploaded_file = request.FILES['document']
         fs = FileSystemStorage()
         name = fs.save(uploaded_file.name, uploaded_file)
         context['url'] = fs.url(name)

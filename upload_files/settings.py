@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'upload.apps.UpfilesConfig',
+
+    'upload.apps.UploadFileConfig',
     'django_cleanup',
 ]
 
@@ -109,10 +110,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_ROOT = [
+'''STATICFILES_ROOT = [
     os.path.join(BASE_DIR, 'upload_files/static')
-]
+]'''
 
-MEDIA_URL = '/files/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'files')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

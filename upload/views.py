@@ -1,10 +1,13 @@
 # from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
+from .forms import UploadForm
+from .models import UploadFile
+
 
 class Home(TemplateView):
-    template_name = 'pages/registration.html'
+    template_name = 'pages/upload_files.html'
 
 
 def upload(request):
@@ -15,12 +18,29 @@ def upload(request):
         name = fs.save(uploaded_file.name, uploaded_file)
         context['url'] = fs.url(name)
 
-    return render(request, 'pages/upload_.html', context)
+    return render(request, 'pages/upload_.html',  context)
 
 
-def login(request):
-    return render(request, 'pages/login.html')
+def list_files(request):
+    files = UploadFile.objects.all()
+    return render(request, 'pages/list_files.html', {
+        'files': files
+    })
 
 
-def reg(request):
-    return render(request, 'pages/registration.html')
+def upload_files(request):
+    if request.method == 'POST':
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('list_files')
+    else:
+        form = UploadForm()
+
+    return render(request, 'pages/upload_files.html', {
+        'form': form
+    })
+
+
+
+

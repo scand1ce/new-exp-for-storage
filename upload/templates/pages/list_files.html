@@ -1,0 +1,35 @@
+<div class="container p-3 my-3 bg-primary text-white">
+<h1>Доступ к файлам</h1>
+<table class="table">
+    <thead>
+    <tr>
+       <th>№ файла</th>
+       <th>коментарий к файлу</th>
+        <th>Загружено</th>
+
+    </tr>
+
+</thead>
+<tbody>
+
+{% for file in  files %}
+<tr>
+    <td>{{file.number}}</td>
+    <td>{{file.comment}}</td>
+    <td>
+        <a href="{{file.file.url}}" class="btn btn-primary" target="_blank">Загрузить</a>
+    </td>
+</tr>
+{%endfor%}
+</tbody>
+    </table>
+<div>
+    <button><a href="{% url 'upload_files' %}">Перейти обратно</a></button>
+
+</div>
+</div>
+
+
+
+
+

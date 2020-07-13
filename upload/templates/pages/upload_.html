@@ -1,8 +1,11 @@
-
+{% block content %}
 <h1>Добавить файл можно сдесь</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="document">
-    <button type="submit" value="Добавить", class="btn btn-primary">Добавить</button>
+    <button type="submit" value="Добавить" class="btn btn-primary">Добавить</button>
 </form>
+{%if url%}
+<p>Загруженый файл: <a href="{{ url }}">{{ url }}</a></p>
+{%endif%}
+{% endblock %}
 

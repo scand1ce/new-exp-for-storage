@@ -12,4 +12,3 @@ class UploadFile(models.Model):
 
 
 
-
